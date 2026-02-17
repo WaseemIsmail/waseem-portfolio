@@ -12,17 +12,14 @@ const sections = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      const scrollPosition = window.scrollY + 150;
 
-      const scrollPosition = window.scrollY + 200;
-
-      sections.forEach((section) => {
+      for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           if (
@@ -32,7 +29,7 @@ export default function Navbar() {
             setActive(section);
           }
         }
-      });
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,17 +37,17 @@ export default function Navbar() {
   }, []);
 
   const linkClass = (section: string) =>
-    `transition duration-300 ${
+    `relative transition duration-300 ${
       active === section
         ? "text-blue-400"
         : "text-white hover:text-blue-400"
     }`;
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+    <div className="fixed top-0 left-0 w-full z-50">
 
-      {/* GLASS HEADER ALWAYS */}
-      <div className="flex justify-center mt-4 transition-all duration-500">
+      {/* Glass Navbar */}
+      <div className="flex justify-center mt-4">
         <div
           className="
             bg-white/10 
@@ -63,7 +60,11 @@ export default function Navbar() {
           "
         >
           {/* Logo */}
-          <a href="#home">
+          <a
+            href="#home"
+            onClick={() => setOpen(false)}
+            className="cursor-pointer"
+          >
             <img
               src={logo}
               alt="Logo"
@@ -73,15 +74,18 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
-            <a href="#home" className={linkClass("home")}>Home</a>
-            <a href="#about" className={linkClass("about")}>About</a>
-            <a href="#projects" className={linkClass("projects")}>Projects</a>
-            <a href="#experience" className={linkClass("experience")}>Experience</a>
-            <a href="#publications" className={linkClass("publications")}>Publications</a>
-            <a href="#contact" className={linkClass("contact")}>Contact</a>
+            {sections.map((section) => (
+              <a
+                key={section}
+                href={`#${section}`}
+                className={linkClass(section)}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            ))}
           </nav>
 
-          {/* Mobile Button */}
+          {/* Mobile Toggle */}
           <div className="md:hidden text-white">
             <button onClick={() => setOpen(!open)}>
               {open ? <X size={24} /> : <Menu size={24} />}
