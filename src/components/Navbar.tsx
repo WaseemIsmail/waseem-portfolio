@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.svg";
 
-const sections = ["home", "about", "projects", "experience", "publications", "contact"];
+const sections = [
+  "home",
+  "about",
+  "projects",
+  "experience",
+  "publications",
+  "contact",
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,19 +18,19 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // glass only after scroll
+      // Glass appears only after scroll
       setScrolled(window.scrollY > 60);
 
-      // active section highlight
-      const scrollPosition = window.scrollY + 150;
+      // Detect active section using viewport center
+      const viewportMiddle = window.innerHeight / 2;
+
       for (const section of sections) {
         const el = document.getElementById(section);
         if (!el) continue;
 
-        if (
-          scrollPosition >= el.offsetTop &&
-          scrollPosition < el.offsetTop + el.offsetHeight
-        ) {
+        const rect = el.getBoundingClientRect();
+
+        if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
           setActive(section);
           break;
         }
@@ -31,31 +38,39 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // set initial state
+    handleScroll(); // Run once on mount
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const linkClass = (section: string) =>
     `transition duration-300 ${
-      active === section ? "text-blue-400" : "text-white hover:text-blue-400"
+      active === section
+        ? "text-blue-400"
+        : "text-white hover:text-blue-400"
     }`;
 
   return (
     <div className="fixed top-0 left-0 w-full z-50 transition-all duration-500">
-      {/* TOP HEADER (no glass) */}
+
+      {/* ===== TOP HEADER (NO GLASS) ===== */}
       {!scrolled && (
         <div className="max-w-6xl mx-auto px-6 py-6 flex justify-between md:justify-center items-center text-white">
-          {/* Desktop nav */}
+
+          {/* Desktop Nav */}
           <nav className="hidden md:flex gap-10 text-sm font-medium uppercase tracking-widest">
-            <a href="#home" className={linkClass("home")}>Home</a>
-            <a href="#about" className={linkClass("about")}>About</a>
-            <a href="#projects" className={linkClass("projects")}>Projects</a>
-            <a href="#experience" className={linkClass("experience")}>Experience</a>
-            <a href="#publications" className={linkClass("publications")}>Publications</a>
-            <a href="#contact" className={linkClass("contact")}>Contact</a>
+            {sections.map((section) => (
+              <a
+                key={section}
+                href={`#${section}`}
+                className={linkClass(section)}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            ))}
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* Mobile Toggle */}
           <div className="md:hidden">
             <button onClick={() => setOpen(!open)}>
               {open ? <X size={28} /> : <Menu size={28} />}
@@ -64,19 +79,24 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* GLASS PILL (only after scroll) */}
+      {/* ===== GLASS NAVBAR (ON SCROLL) ===== */}
       {scrolled && (
-        <div className="flex justify-center mt-4 transition-all duration-500">
+        <div className="flex justify-center mt-4">
           <div
             className="
               bg-white/10 backdrop-blur-xl border border-white/20
               rounded-full shadow-lg
               px-6 md:px-12 py-3 md:py-4
               flex items-center gap-6
+              transition-all duration-500
             "
           >
             {/* Logo */}
-            <a href="#home" onClick={() => setOpen(false)}>
+            <a
+              href="#home"
+              onClick={() => setOpen(false)}
+              className="cursor-pointer"
+            >
               <img
                 src={logo}
                 alt="Logo"
@@ -84,17 +104,20 @@ export default function Navbar() {
               />
             </a>
 
-            {/* Desktop nav */}
+            {/* Desktop Nav */}
             <nav className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
-              <a href="#home" className={linkClass("home")}>Home</a>
-              <a href="#about" className={linkClass("about")}>About</a>
-              <a href="#projects" className={linkClass("projects")}>Projects</a>
-              <a href="#experience" className={linkClass("experience")}>Experience</a>
-              <a href="#publications" className={linkClass("publications")}>Publications</a>
-              <a href="#contact" className={linkClass("contact")}>Contact</a>
+              {sections.map((section) => (
+                <a
+                  key={section}
+                  href={`#${section}`}
+                  className={linkClass(section)}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </a>
+              ))}
             </nav>
 
-            {/* Mobile hamburger */}
+            {/* Mobile Toggle */}
             <div className="md:hidden text-white">
               <button onClick={() => setOpen(!open)}>
                 {open ? <X size={24} /> : <Menu size={24} />}
@@ -104,7 +127,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* MOBILE DROPDOWN */}
+      {/* ===== MOBILE DROPDOWN ===== */}
       {open && (
         <div className="md:hidden mt-4 mx-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl py-6 flex flex-col items-center gap-6 text-white text-lg shadow-lg">
           {sections.map((section) => (
