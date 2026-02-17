@@ -3,7 +3,6 @@ import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.svg";
 
 const sections = [
-  "home",
   "about",
   "projects",
   "experience",
@@ -18,10 +17,14 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Glass appears only after scroll
       setScrolled(window.scrollY > 60);
 
-      // Detect active section using viewport center
+      // Home active when near top
+      if (window.scrollY < 100) {
+        setActive("home");
+        return;
+      }
+
       const viewportMiddle = window.innerHeight / 2;
 
       for (const section of sections) {
@@ -38,7 +41,7 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Run once on mount
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -50,6 +53,12 @@ export default function Navbar() {
         : "text-white hover:text-blue-400"
     }`;
 
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setOpen(false);
+  };
+
   return (
     <div className="fixed top-0 left-0 w-full z-50 transition-all duration-500">
 
@@ -59,6 +68,9 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex gap-10 text-sm font-medium uppercase tracking-widest">
+            <a href="#" onClick={scrollToTop} className={linkClass("home")}>
+              Home
+            </a>
             {sections.map((section) => (
               <a
                 key={section}
@@ -92,11 +104,7 @@ export default function Navbar() {
             "
           >
             {/* Logo */}
-            <a
-              href="#home"
-              onClick={() => setOpen(false)}
-              className="cursor-pointer"
-            >
+            <a href="#" onClick={scrollToTop}>
               <img
                 src={logo}
                 alt="Logo"
@@ -106,6 +114,9 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
+              <a href="#" onClick={scrollToTop} className={linkClass("home")}>
+                Home
+              </a>
               {sections.map((section) => (
                 <a
                   key={section}
@@ -130,6 +141,9 @@ export default function Navbar() {
       {/* ===== MOBILE DROPDOWN ===== */}
       {open && (
         <div className="md:hidden mt-4 mx-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl py-6 flex flex-col items-center gap-6 text-white text-lg shadow-lg">
+          <a href="#" onClick={scrollToTop} className={active === "home" ? "text-blue-400" : ""}>
+            Home
+          </a>
           {sections.map((section) => (
             <a
               key={section}
