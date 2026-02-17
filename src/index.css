@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.stroke-text {
+  -webkit-text-stroke: 1px rgba(120, 180, 255, 0.25);
+}
+.glass-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, sans-serif;
+}
+
+@layer components {
+  .section {
+    @apply max-w-6xl mx-auto px-6 py-24;
+  }
+}
+
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-2000px); }
+}
+
+.animate-stars {
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 2px, transparent 2px);
+  background-size: 200px 200px, 300px 300px, 400px 400px;
+  background-position: 0 0, 100px 100px, 200px 200px;
+  animation: starsMove 120s linear infinite;
+  opacity: 0.4;
+}
+
+/* NAV HOVER ANIMATION */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(to right, #3b82f6, #06b6d4);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #60a5fa;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}

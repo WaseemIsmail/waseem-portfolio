@@ -1,0 +1,16 @@
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+  extend: {
+  animation: {
+    "spin-slow": "spin 25s linear infinite",
+  },
+}
+
+}
