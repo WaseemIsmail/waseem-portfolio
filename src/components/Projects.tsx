@@ -2,6 +2,23 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+  title: "Contexta — AI-Powered News & Engagement Platform",
+  description:
+    "Developed Contexta as an AI-powered news and engagement platform where users can discover trending stories, explore related topics, vote on discussions, and interact with content in a more engaging way. Integrated Google Analytics and Google Search Console to monitor user behavior, traffic growth, search visibility, and overall content performance.",
+  tech: [
+    "AI",
+    "News Platform",
+    "User Engagement",
+    "Content Discovery",
+    "Voting Features",
+    "Google Analytics",
+    "Google Search Console",
+    "SEO",
+  ],
+  highlight: "AI-powered news discovery with engagement and SEO tracking",
+  github: "https://contextra.netlify.app/",
+  },
+  {
   title: "DocuAgent — Agentic LLM Document Assistant with MCP",
   description:
     "Built an agentic document assistant that classifies user intent and routes queries to the correct AI workflow, including document Q&A, summarisation, and quiz generation. Implemented a custom MCP server with a swappable LLM provider layer supporting OpenAI, Claude, and Gemini without changing the core logic.",
