@@ -35,50 +35,50 @@ export default function About() {
         </h3>
 
         <p className="text-gray-400 text-lg leading-relaxed">
-          I am an Associate Software Engineer specializing in enterprise
-          application development and AI-powered systems. Currently working on
-          Ventura ERP, I design and optimize scalable modules using .NET,
-          Angular, and MS SQL Server to support real-world business operations
+          I am an Associate Software Engineer with experience in enterprise
+          application development, full-stack engineering, and AI-powered
+          systems. I currently work on Ventura ERP, where I design, develop,
+          and optimize scalable modules using .NET, Angular, and MS SQL Server
           across inventory, finance, and sales domains.
         </p>
 
         <p className="text-gray-400 text-lg leading-relaxed mt-6">
-          My passion lies in backend architecture, database optimization,
-          distributed systems, and integrating AI/ML solutions such as NLP
-          pipelines and computer vision models into production-ready platforms.
-          I focus on writing clean, maintainable code that delivers measurable
-          business impact.
+          My interests focus on backend architecture, database optimization,
+          RESTful API development, cloud-ready systems, and AI/ML integration.
+          I have also worked on NLP pipelines, LLM-based tools, and computer
+          vision solutions, combining software engineering with intelligent
+          automation to build practical, business-focused applications.
         </p>
 
         {/* ================= HIGHLIGHT CARDS ================= */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+          <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl hover:border-blue-500/60 transition">
             <h4 className="text-xl font-semibold text-white mb-2">
               Enterprise Systems
             </h4>
-            <p className="text-gray-400 text-sm">
-              ERP modules, distributed architecture, performance optimization,
-              and scalable backend services.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              ERP modules, RESTful APIs, SQL optimization, and scalable backend
+              features supporting real-world business operations.
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+          <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl hover:border-blue-500/60 transition">
             <h4 className="text-xl font-semibold text-white mb-2">
-              AI & Machine Learning
+              AI & LLM Solutions
             </h4>
-            <p className="text-gray-400 text-sm">
-              NLP pipelines, sentiment analysis, computer vision, and LLM
-              integration for intelligent automation.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              NLP pipelines, document assistants, sentiment analysis, computer
+              vision, and LLM-powered workflows for intelligent automation.
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+          <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl hover:border-blue-500/60 transition">
             <h4 className="text-xl font-semibold text-white mb-2">
-              Clean Architecture
+              Clean Engineering
             </h4>
-            <p className="text-gray-400 text-sm">
-              REST APIs, microservices, database indexing, and production-ready
-              deployments in Agile environments.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Clean code, secure API design, database indexing, Agile delivery,
+              code reviews, and maintainable software architecture.
             </p>
           </div>
         </div>

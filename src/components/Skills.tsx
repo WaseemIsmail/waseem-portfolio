@@ -2,32 +2,99 @@ import { motion } from "framer-motion";
 
 const skillCategories = [
   {
-    title: "Languages",
-    skills: ["C#", "Java", "Python", "JavaScript", "TypeScript", "Kotlin"],
+    title: "Backend Development",
+    skills: [
+      "C#",
+      ".NET Core",
+      "ASP.NET MVC",
+      "Web API",
+      "Entity Framework",
+      "RESTful APIs",
+      "Node.js",
+      "Express",
+    ],
   },
   {
-    title: "Frameworks & Tools",
-    skills: [".NET Core", "ASP.NET MVC", "Angular", "React", "Node.js", "Express", "Flask", "xUnit"],
+    title: "Frontend Development",
+    skills: [
+      "Angular",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Bootstrap",
+      "Tailwind CSS",
+    ],
   },
   {
-    title: "Enterprise Architecture",
-    skills: ["ERP Development", "Distributed Systems", "Microservices", "RESTful APIs"],
+    title: "Programming Languages",
+    skills: ["C#", "Python", "Java", "JavaScript", "TypeScript", "Kotlin"],
   },
   {
     title: "Databases",
-    skills: ["MS SQL Server", "MongoDB", "PostgreSQL", "MySQL", "Firebase"],
+    skills: [
+      "MS SQL Server",
+      "Stored Procedures",
+      "Query Optimization",
+      "Indexing",
+      "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "Firebase",
+    ],
   },
   {
-    title: "DevOps & Cloud",
-    skills: ["CI/CD Pipelines", "Docker", "AWS"],
+    title: "Cloud & DevOps",
+    skills: [
+      "AWS",
+      "Docker",
+      "CI/CD Pipelines",
+      "GitHub Workflows",
+      "Azure DevOps",
+      "Git",
+      "GitHub",
+    ],
   },
   {
-    title: "AI / ML",
-    skills: ["TensorFlow", "Hugging Face", "NLP", "Large Language Models", "Model Integration"],
+    title: "AI / LLM",
+    skills: [
+      "Python",
+      "OpenAI API",
+      "Claude API",
+      "Gemini",
+      "MCP Server",
+      "Prompt Engineering",
+      "LLM Agent Workflows",
+      "Hugging Face",
+      "NLP",
+      "TensorFlow",
+    ],
   },
   {
-    title: "Other",
-    skills: ["OOP", "Design Patterns", "Agile/Scrum", "Cross-functional Collaboration"],
+    title: "Security & Testing",
+    skills: [
+      "Secure Coding",
+      "Authentication Patterns",
+      "Input Validation",
+      "OWASP Awareness",
+      "xUnit",
+      "Unit Testing",
+      "UAT Support",
+      "Test Data Management",
+    ],
+  },
+  {
+    title: "Software Engineering Practices",
+    skills: [
+      "OOP",
+      "Design Patterns",
+      "Clean Code",
+      "Code Review",
+      "Agile/Scrum",
+      "Technical Documentation",
+      "Cross-functional Collaboration",
+    ],
   },
 ];
 
@@ -45,21 +112,21 @@ export default function Skills() {
         Technical Skills
       </h2>
 
-      <div className="space-y-12">
+      <div className="grid md:grid-cols-2 gap-8">
         {skillCategories.map((category) => (
           <div
             key={category.title}
-            className="bg-slate-900 border border-slate-800 p-10 rounded-xl"
+            className="bg-slate-900 border border-slate-800 p-8 rounded-xl hover:border-blue-500/60 transition"
           >
             <h3 className="text-xl font-semibold text-blue-500 mb-6">
               {category.title}
             </h3>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               {category.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="bg-slate-800 text-gray-300 px-4 py-2 rounded-lg text-sm hover:border hover:border-blue-500 transition"
+                  className="bg-slate-800 text-gray-300 px-4 py-2 rounded-lg text-sm border border-transparent hover:border-blue-500 hover:text-white transition"
                 >
                   {skill}
                 </span>

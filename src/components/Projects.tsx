@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+  title: "DocuAgent — Agentic LLM Document Assistant with MCP",
+  description:
+    "Built an agentic document assistant that classifies user intent and routes queries to the correct AI workflow, including document Q&A, summarisation, and quiz generation. Implemented a custom MCP server with a swappable LLM provider layer supporting OpenAI, Claude, and Gemini without changing the core logic.",
+  tech: ["Python", "Streamlit", "OpenAI API", "Claude API", "Gemini", "MCP Python SDK", "Prompt Engineering"],
+  highlight: "Agentic AI workflow with MCP tool routing",
+  github: "https://github.com/WaseemIsmail/docuagent",
+  },
+  {
     title: "AI-Driven Meeting Summaries & Sentiment (NLP)",
     description:
       "Designed and implemented an end-to-end NLP pipeline that transcribes meeting audio using Whisper (~78.3% WER-adjusted accuracy), generates abstractive summaries using T5, and applies sentiment analysis via Transformers to produce structured meeting minutes and SRS-ready documentation.",

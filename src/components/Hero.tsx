@@ -44,7 +44,7 @@ export default function Hero() {
           bg-clip-text text-transparent
         "
         >
-          Associate Software Engineer · .NET & AI Engineer
+          Full Stack Software Developer · .NET Core · Angular · AI/LLM
         </p>
 
         {/* DESCRIPTION */}
